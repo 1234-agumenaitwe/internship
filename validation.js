@@ -63,9 +63,35 @@ function validateForm() {
     const errorElements = document.querySelectorAll('.error');
     errorElements.forEach(element => element.classList.remove('error'));
     errorElements.forEach(element => element.textContent = '');
-  }
-  
-  // Add event listener to the form's submit event
-  const signupForm = document.getElementById('signup-form');
-  signupForm.addEventListener('submit', validateForm);  // Call validateForm on form submission
-  
+ 
+
+
+
+    const signupForm = document.getElementById('signup-form');
+const notification = document.getElementById('notification');
+const submitButton = document.getElementById('submit-button');
+
+signupForm.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent default form submission
+
+  // Implement your form validation logic here
+  // (Assuming some successful validation)
+
+  // Show top-positioned notification
+  notification.classList.remove('hidden');
+  notification.style.position = 'fixed';  // Make it fixed to the top
+  notification.style.top = '0';  // Set top position to 0
+  notification.style.left = '0';  // Set left position to 0 (center it horizontally you can adjust)
+  notification.style.width = '100%';  // Make it full width
+  setTimeout(() => {
+    notification.classList.add('hidden');
+  }, 3000); // Delay for 3 seconds
+
+  // Simulate form submission (replace with your actual server-side interaction)
+  // submitButton.disabled = true; // Optionally disable submit button to prevent resubmission
+
+  // Note: You'll likely need to implement your server-side validation and processing
+  // This example focuses on client-side notification.
+});
+
+}
